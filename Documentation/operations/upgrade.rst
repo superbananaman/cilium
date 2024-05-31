@@ -309,6 +309,9 @@ Annotations:
 * Operating Cilium in ``--datapath-mode=lb-only`` for plain Docker mode now requires to
   add an additional ``--bpf-lb-external-control-plane=true`` to the command line, otherwise
   it is assumed that Kubernetes is present.
+* The Cilium cluster name validation cannot be bypassed anymore, both for the local and
+  remote clusters. The cluster name is strictly enforced to consist of at most 32 lower
+  case characters and '-', start and end with an alphanumeric character.
 
 Removed Options
 ~~~~~~~~~~~~~~~
