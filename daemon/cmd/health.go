@@ -150,4 +150,7 @@ func (d *Daemon) cleanupHealthEndpoint() {
 
 	// Remove health endpoint devices
 	health.CleanupEndpoint()
+
+	// debug
+	time.Sleep(5 * time.Second)
 }
