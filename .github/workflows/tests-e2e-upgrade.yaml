@@ -164,8 +164,8 @@ jobs:
             secondary-network: 'true'
             tunnel: 'disabled'
             lb-mode: 'snat'
-            egress-gateway: 'true'
-            lb-acceleration: 'testing-only'
+            #egress-gateway: 'true'
+            #lb-acceleration: 'testing-only'
             # Disable until https://github.com/cilium/cilium/issues/30717
             # has been resolved.
             # ingress-controller: 'true'
