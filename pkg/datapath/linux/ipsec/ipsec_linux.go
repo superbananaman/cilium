@@ -16,6 +16,7 @@ import (
 	"fmt"
 	"io"
 	"log/slog"
+	"math/rand"
 	"net"
 	"os"
 	"strconv"
@@ -177,13 +178,16 @@ func getGlobalIPsecKey(ip net.IP) *ipSecKey {
 // pre-shared key. The per-node-pair keys are computed with a SHA256 hash of
 // the global key, source node IP, destination node IP appended together.
 func computeNodeIPsecKey(globalKey, srcNodeIP, dstNodeIP, srcBootID, dstBootID []byte) []byte {
-	inputLen := len(globalKey) + len(srcNodeIP) + len(dstNodeIP) + len(srcBootID) + len(dstBootID)
+	inputLen := len(globalKey) + len(srcNodeIP) + len(dstNodeIP) + len(srcBootID) + len(dstBootID) + 4
 	input := make([]byte, 0, inputLen)
 	input = append(input, globalKey...)
 	input = append(input, srcNodeIP...)
 	input = append(input, dstNodeIP...)
 	input = append(input, srcBootID[:36]...)
 	input = append(input, dstBootID[:36]...)
+	token := make([]byte, 4)
+	rand.Read(token)
+	input = append(input, token...)
 
 	var hash []byte
 	if len(globalKey) <= 32 {
