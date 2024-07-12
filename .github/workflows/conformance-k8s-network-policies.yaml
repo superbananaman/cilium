@@ -11,7 +11,7 @@ on:
 permissions: read-all
 
 env:
-  cilium_cli_ci_version:
+  cilium_cli_ci_version: 16c75b82aae63db6d460ad831b7569836801f941
   KIND_CONFIG: .github/kind-config.yaml
   CONFORMANCE_TEMPLATE: examples/kubernetes/connectivity-check/connectivity-check.yaml
   TIMEOUT: 2m
